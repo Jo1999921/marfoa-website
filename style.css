@@ -175,10 +175,19 @@ header {
 }
 
 .card {
-  background: #111;
-  border: 1px solid #222;
-  border-radius: 16px;
   padding: 28px;
+  background: linear-gradient(135deg, #151515, #0f0f0f);
+  border: 1px solid #2a2a2a;
+  border-radius: 18px;
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.02);
+  border-color: #ff4fa3;
+  box-shadow: 0 20px 40px rgba(255, 79, 163, 0.15);
 }
 
 .card h3 {
@@ -188,6 +197,21 @@ header {
 
 .card p {
   color: #ddd;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background: #ff4fa3;
+  transition: 0.4s;
+}
+
+.card:hover::before {
+  width: 100%;
 }
 
 .portfolio-grid {
@@ -569,5 +593,42 @@ button {
 @media (max-width: 900px) {
   .about-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* ===== CARD ENTRANCE ANIMATION ===== */
+
+.animate-card {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 0.8s ease forwards;
+}
+
+.animate-card:nth-child(1) { animation-delay: 0.1s; }
+.animate-card:nth-child(2) { animation-delay: 0.2s; }
+.animate-card:nth-child(3) { animation-delay: 0.3s; }
+.animate-card:nth-child(4) { animation-delay: 0.4s; }
+.animate-card:nth-child(5) { animation-delay: 0.5s; }
+.animate-card:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-title h1 {
+  animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
